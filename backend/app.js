@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const Post = require('./models/post');
 const app = express();
+const Post = require('./models/post')
+const mongoose = require('mongoose');
+
 
 
 const url = 'mongodb+srv://deltase7en:KmxvazIpJwqjbeVt@valkyrie-ip6dl.mongodb.net/test?retryWrites=true&w=majority';
@@ -12,7 +13,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.createConnection(
+mongoose.connect(
   url, () => {})
   .then(() => {
     console.log('Connected to database!');
@@ -23,24 +24,23 @@ mongoose.createConnection(
   })
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-app.use(express.static(__dirname + '/static'));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
-  'Access-Control-Allow-Headers',
-  "Origin, X-Resquested-With, Content-Type, Accept"
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
   res.setHeader(
-  'Access-Control-Allow-Methods',
-  "GET, POST, PATCH, DELETE, OPTIONS"
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE, OPTIONS"
   );
   next();
-});
+})
 
-app.post('/api/posts', (req, res, next) => {
+app.post("/api/posts", (req, res, next) => {
+  //Maybe the groundzero of the problems
   const post = new Post({
     title: req.body.title,
     content: req.body.content
@@ -48,18 +48,19 @@ app.post('/api/posts', (req, res, next) => {
   post.save();
   res.status(201).json({
     message: 'Post added successfully'
-  });
-});
+  })
+})
 
-
-app.get('/api/posts' ,(req, res, next) => {
+app.get('/api/posts', (req, res, next) => {
   Post.find()
     .then(documents => {
       res.status(200).json({
-        message: 'Posts fetched succesfully!',
+        message: 'Posts fetched successfully',
         posts: documents
       });
-    });
-});
+    })
+
+})
+
 
 module.exports = app;
