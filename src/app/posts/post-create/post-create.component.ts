@@ -5,6 +5,7 @@ import { PostsService } from "../post.service";
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
 import { mimeType } from './mime-type.validador'
+import { fromEventPattern } from 'rxjs';
 
 @Component({
   selector: "app-post-create",

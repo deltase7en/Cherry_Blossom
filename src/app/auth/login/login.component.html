@@ -11,7 +11,9 @@
       </mat-form-field>
       <button mat-raised-button
         color="primary"
-        type="submit">
+        type="submit"
+        *ngIf="!isLoading"
+        >
         Login
       </button>
     </form>

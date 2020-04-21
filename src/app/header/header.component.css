@@ -1,19 +1,28 @@
-a {
-  text-decoration: none;
-  color:white;
-}
-
 ul{
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color:white;
+}
+
+
 ul{
-  display:flex;
+  display: flex;
 }
 
 .space{
   flex: 1 1 auto;
+}
+
+p{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
 }
 
