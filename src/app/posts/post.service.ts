@@ -4,7 +4,6 @@ import { Subject } from "rxjs";
 import { map } from 'rxjs/operators';
 
 import { Post } from "./post.model";
-import { TmplAstTemplate } from '@angular/compiler';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: "root" })
