@@ -33,7 +33,7 @@ export class PostsService {
       }))
       .subscribe(transformedPostData => {
         this.posts = transformedPostData.posts;
-        this.postsUpdated.next({posts: [...this.posts].reverse(), postCount: transformedPostData.maxPosts});
+        this.postsUpdated.next({posts: [...this.posts], postCount: transformedPostData.maxPosts});
       });
   }
 

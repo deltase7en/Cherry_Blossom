@@ -68,7 +68,8 @@ router.put("/:id", checkAuth, multer({storage: storage}).single("image"), (req, 
 router.get('', (req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
-  const postQuery = Post.find();
+  const postQuery = Post.find().sort({ _id: -1 }).limit(10)
+;
   let fetchedPosts;
   if(pageSize && currentPage){
     postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
