@@ -9,6 +9,11 @@ ul{
   margin: 0;
 }
 
+ul{
+  display:flex;
+}
+
 .space{
   flex: 1 1 auto;
 }
+
