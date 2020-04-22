@@ -62,6 +62,8 @@ private authStatusSubs: Subscription;
    this.isLoading = true;
   this.postsService.deletePost(postId).subscribe(() => {
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
+  }, () => {
+    this.isLoading = false;
   });
  }
 
